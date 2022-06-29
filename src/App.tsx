@@ -1,5 +1,7 @@
 import React from 'react';
-import { Box, createTheme, CssBaseline, Paper, ThemeProvider, Typography } from "@mui/material";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Box, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { routes as appRoutes } from './routes'
 
 // set up custom theme(optional)
 
@@ -23,14 +25,17 @@ const theme = createTheme({
 
 function App() {
   return (
+    // just change the theme settings here 
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Box height="100vh" display="flex" justifyContent="center" alignItems="center" flexDirection="column">
-        <Paper elevation={3} sx={{ padding: "1rm", backgroundColor: "secondary.light" }}>
-          <Typography color="primary.dark" variant="h1">
-            Starter App
-          </Typography>
-        </Paper>
+      <Box height='100vh' display='flex' flexDirection='column'>
+        <Router>
+          <Routes>
+            {appRoutes.map((route) => (
+              <Route key={route.key} path={route.path} element={<route.component />} />
+            ))}
+          </Routes>
+        </Router>
       </Box>
     </ThemeProvider>
   );
