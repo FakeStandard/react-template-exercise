@@ -12,7 +12,7 @@ const theme = createTheme({
   palette: {
     primary: { // 主要色調
       light: "#63b8ff",
-      main: "#0989e3",
+      main: "#FFF5B0",
       dark: "#005db0",
       contrastText: "#000"
     },
@@ -32,12 +32,14 @@ function App() {
       <CssBaseline />
       <Box height='100vh' display='flex' flexDirection='column'>
         <Router>
+          {/* set up navigation bar */}
           <Navbar />
           <Routes>
             {appRoutes.map((route) => (
               <Route key={route.key} path={route.path} element={<route.component />} />
             ))}
           </Routes>
+          {/* set up footer */}
           <Footer />
         </Router>
       </Box>
